@@ -1,0 +1,76 @@
+﻿<Window x:Class="SecuenciadorTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SecuenciadorTest"
+        mc:Ignorable="d"
+        Title="Secuenciador 1.0" WindowStyle="SingleBorderWindow" WindowState="Maximized" ResizeMode="CanMinimize" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="79*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--Menu Bar-->
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="2">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Exit" x:Name="btnMenuExit" Click="btnMenuExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Nest 1 Configuration" />
+                    <MenuItem Header="Nest 2 Configuration" />
+                    <MenuItem Header="Nest 3 Configuration" />
+                </MenuItem>
+                <MenuItem Header="View">
+                    <MenuItem Header="Tools Bar" IsCheckable="True"/>
+                    <MenuItem Header="Status Bar" IsCheckable="True"/>
+                </MenuItem>
+                <MenuItem Header="Tools">
+
+                </MenuItem>
+                <MenuItem Header="Windows">
+                    <MenuItem Header="Cascade" />
+                    <MenuItem Header="Tile Vertically" />
+                    <MenuItem Header="Tile Horizontally" />
+                    <MenuItem Header="Close All Windows" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About" />
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        <!--Interact Panel-->
+        <Menu Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,3" >
+            <Button x:Name="menuBtnStart" IsEnabled="False" Click="menuBtnStart_Click">Start</Button>
+            <Button x:Name="menuBtnStop" IsEnabled="False">Stop</Button>
+            <ComboBox x:Name="menuCmbVersion" Text="Select version..." IsEditable="True" IsReadOnly="True" IsEnabled="False" SelectionChanged="menuCmbVersion_SelectionChanged">
+                <ComboBoxItem>Version 1</ComboBoxItem>
+                <ComboBoxItem>Version 2</ComboBoxItem>
+                <ComboBoxItem>Version 3</ComboBoxItem>
+            </ComboBox>
+            <ComboBox x:Name="menuCmbNest" Text="Select number of nests" IsEditable="True" IsReadOnly="True" SelectionChanged="menuCmbNest_SelectionChanged">
+                <ComboBoxItem>1 Nest</ComboBoxItem>
+                <ComboBoxItem>2 Nests</ComboBoxItem>
+                <ComboBoxItem>3 Nests</ComboBoxItem>
+            </ComboBox>
+        </Menu>
+        <!--Content-->
+        <Grid Grid.Row="2" x:Name="dynamicGrid" Grid.ColumnSpan="2">
+
+        </Grid>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Label>Status:</Label>
+            <Label x:Name="lblStatusBar"></Label>
+
+        </StackPanel>
+    </Grid>
+</Window>
